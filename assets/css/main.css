@@ -2312,6 +2312,11 @@
 			box-shadow: none !important;
 			color: #ffffff !important;
 		}
+			.githubLogo
+			{
+				height: 40px;
+				float: left;
+			}
 
 			input[type="submit"].special:hover,
 			input[type="reset"].special:hover,
