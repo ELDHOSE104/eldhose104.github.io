@@ -1554,7 +1554,7 @@
 		border-left: solid 4px #fff;
 		font-style: italic;
 		margin: 0 0 2em 0;
-		padding: 0.5em 0 0.5em 2em;
+		padding: 0.5em 0 0.5em em;
 	}
 
 	code {
@@ -3816,4 +3816,18 @@
 
 	body.is-mobile.landing #footer {
 		background-color: #1d242a;
+	}
+
+	/*Added CSS by ELDHOSE*/
+
+	.h2Heading
+	{
+		border-bottom: none !important;
+
+	}
+	.blockBoarder
+	{
+		border-color: rgba(0, 0, 0, 0.125);
+		border-bottom: 2px solid #FFF;
+		border-right: 4px solid #FFF;
 	}
