@@ -1449,7 +1449,6 @@
 		-webkit-transition: color 0.2s ease, border-bottom-color 0.2s ease;
 		-ms-transition: color 0.2s ease, border-bottom-color 0.2s ease;
 		transition: color 0.2s ease, border-bottom-color 0.2s ease;
-		border-bottom: dotted 1px;
 		color: inherit;
 		text-decoration: none;
 	}
@@ -1554,7 +1553,7 @@
 		border-left: solid 4px #fff;
 		font-style: italic;
 		margin: 0 0 2em 0;
-		padding: 0.5em 0 0.5em 2em;
+		padding: 0.5em 0 0.5em em;
 	}
 
 	code {
@@ -2312,6 +2311,11 @@
 			box-shadow: none !important;
 			color: #ffffff !important;
 		}
+			.githubLogo
+			{
+				height: 40px;
+				float: left;
+			}
 
 			input[type="submit"].special:hover,
 			input[type="reset"].special:hover,
@@ -3406,7 +3410,7 @@
 			-ms-transition: -ms-transform 0.5s ease, opacity 0.5s ease;
 			transition: transform 0.5s ease, opacity 0.5s ease;
 			display: inline-block;
-			font-size: 1.75em;
+			font-size: 3rem;
 			opacity: 1;
 			padding: 0.35em 1em;
 			position: relative;
@@ -3528,7 +3532,7 @@
 			}
 
 				#banner h2 {
-					font-size: 1.25em;
+					font-size: 2.25em;
 				}
 
 				#banner br {
@@ -3581,7 +3585,7 @@
 			-ms-order: 1;
 			order: 1;
 			padding-right: 3em;
-			width: 70%;
+			/*width: 70%;*/
 		}
 
 			#cta .inner header p {
@@ -3811,4 +3815,18 @@
 
 	body.is-mobile.landing #footer {
 		background-color: #1d242a;
+	}
+
+	/*Added CSS by ELDHOSE*/
+
+	.h2Heading
+	{
+		border-bottom: none !important;
+
+	}
+	.blockBoarder
+	{
+		border-color: rgba(0, 0, 0, 0.125);
+		border-bottom: 2px solid #FFF;
+		border-right: 4px solid #FFF;
 	}
