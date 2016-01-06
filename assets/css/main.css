@@ -3585,7 +3585,7 @@
 			-ms-order: 1;
 			order: 1;
 			padding-right: 3em;
-			width: 70%;
+			/*width: 70%;*/
 		}
 
 			#cta .inner header p {
