@@ -27,4 +27,12 @@ class Scrapper_model extends CI_Model {
         $query = $this->db->get();
         return $query->result_array();
 	}
+	public function get_draws()
+	{
+		$this->db->select('*');
+        $this->db->from('tbl_draw');
+        $this->db->order_by('id','desc');
+        $query = $this->db->get();
+        return $query->result_array();
+	}
 }

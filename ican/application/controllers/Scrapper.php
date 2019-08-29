@@ -18,17 +18,20 @@ class Scrapper extends CI_Controller {
 	$url = "https://moving2canada.com/express-entry-draw/";
 	$web = new WebBrowser();
 	$result = $web->Process($url);
-
 	// Check for connectivity and response errors.
 	if (!$result["success"])
 	{
-		echo "Error retrieving URL.  " . $result["error"] . "\n";
+		// echo "Error retrieving URL.  " . $result["error"] . "\n";
+		$data = $this->scrapper_model->get_draws();
+		echo json_encode($data);
 		exit();
 	}
 
 	if ($result["response"]["code"] != 200)
 	{
-		echo "Error retrieving URL.  Server returned:  " . $result["response"]["code"] . " " . $result["response"]["meaning"] . "\n";
+		// echo "Error retrieving URL.  Server returned:  " . $result["response"]["code"] . " " . $result["response"]["meaning"] . "\n";
+		$data = $this->scrapper_model->get_draws();
+		echo json_encode($data);
 		exit();
 	}
 
@@ -69,7 +72,13 @@ class Scrapper extends CI_Controller {
 				$count = $this->scrapper_model->insert($key);
 				$draw_data[] = $key;
 			}
-			echo json_encode($draw_data);
+			if($draw_data){
+				$draw_data = array_reverse($draw_data);
+				echo json_encode($draw_data);
+			}else{
+				$draw_data = $this->scrapper_model->get_draws();
+				echo json_encode($draw_data);
+			}
 			die();
 		}else{
 			$data[$i][$j] = $row->GetInnerHTML();
