@@ -2,7 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Scrapper extends CI_Controller {
-
+	public function __construct() {
+	parent::__construct();
+	$this->load->model('scrapper_model');
+	}
 	public function index()
 	{
 	require_once APPPATH . "third_party/support/web_browser.php";
@@ -44,30 +47,38 @@ class Scrapper extends CI_Controller {
 	foreach ($rows as $row)
 	{
 		// echo "\t" . $row->GetOuterHTML() . "\n\n";
-		if($j=='Draw'){
-			$j = 'Date';
-		}else if($j=='Date'){
-			$j='Invitations';
-		}else if($j=='Invitations'){
-			$j='Points';
-		}else if($j=='Points'){
-			$j='Draw';
+		if($j=='draw'){
+			$j = 'draw_date';
+		}else if($j=='draw_date'){
+			$j='invitations';
+		}else if($j=='invitations'){
+			$j='minimum_point';
+		}else if($j=='minimum_point'){
+			$j='draw';
 			$i++;
 		}else if($j==''){
-			$j='Draw';
+			$j='draw';
 		}
 		if($i==0){
-			$data[$i][$j] = $row->GetOuterHTML();
-		}else if($data['0']['Draw']==$row->GetOuterHTML()){
-			print_r($data);
-			exit();
+			$data[$i][$j] = $row->GetInnerHTML();
+		}else if($data['0']['draw']==$row->GetInnerHTML()){
+			$data = array_reverse($data);
+			foreach ($data as $key ) {
+				$key['draw'] = str_replace("<strong>","",$key['draw']);
+				$key['draw'] = str_replace("</strong>","",$key['draw']);
+				$count = $this->scrapper_model->insert($key);
+				$draw_data[] = $key;
+			}
+			echo json_encode($draw_data);
+			die();
 		}else{
-			$data[$i][$j] = $row->GetOuterHTML();
+			$data[$i][$j] = $row->GetInnerHTML();
 		}
 	}
 	}
-	public function test()
+	public function last_draw()
 	{
-		$this->load->view('welcome_message');
+		$data = $this->scrapper_model->get_last_draw();
+		echo json_encode($data);
 	}
 }
