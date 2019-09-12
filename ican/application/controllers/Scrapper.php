@@ -2,6 +2,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Scrapper extends CI_Controller {
+	header("Access-Control-Allow-Origin: *");
+
+	header("Access-Control-Allow-Headers:Origin, Authorization, X-Requested-With, Content-Type, Accept");
+
+	header("Access-Control-Allow-Methods:POST, GET, OPTIONS");
+
+	header('Access-Control-Allow-Credentials: true');
+
+	header('Access-Control-Max-Age: 86400');
 	public function __construct() {
 	parent::__construct();
 	$this->load->model('scrapper_model');
