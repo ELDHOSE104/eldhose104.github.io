@@ -96,6 +96,15 @@ class Scrapper extends CI_Controller {
 	}
 	public function last_draw()
 	{
+		header("Access-Control-Allow-Origin: *");
+
+		header("Access-Control-Allow-Headers:Origin, Authorization, X-Requested-With, Content-Type, Accept");
+
+		header("Access-Control-Allow-Methods:POST, GET, OPTIONS");
+
+		header('Access-Control-Allow-Credentials: true');
+
+		header('Access-Control-Max-Age: 86400');
 		$data = $this->scrapper_model->get_last_draw();
 		echo json_encode($data);
 	}
